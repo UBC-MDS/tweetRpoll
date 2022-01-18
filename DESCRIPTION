@@ -2,9 +2,11 @@ Package: tweetRpoll
 Title: Extract Twitter Poll Data
 Version: 0.0.0.9000
 Authors@R: 
+  c(
     person("Rada", "Rudyak", , "emailrada@gmail.com", role = c("aut", "cre")),
     person("Wenxin", "Xiang", , "theaxiangwx@gmail.com", role = c("aut", "cre")),
     person("Linh Giang", "Nguyen", , "giang.nglinh@gmail.com", role = c("aut", "cre"))
+  )
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
