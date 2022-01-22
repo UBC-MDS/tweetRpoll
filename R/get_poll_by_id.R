@@ -1,4 +1,3 @@
-# +
 #' Get Poll Data from Poll ID
 #'
 #' Return a data.frame of poll data from Twitter given a poll ID. 
