@@ -1,4 +1,3 @@
-# +
 #' Visualize Poll Data
 #'
 #' Return a bar chart of poll responses.
