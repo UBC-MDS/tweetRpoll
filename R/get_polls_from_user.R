@@ -1,8 +1,6 @@
-# +
 #' Get Polls from User
 #'
 #' Return a data.frame of poll ids for a given Twitter user.
-#'
 #' REQUIRES: Credentials for the Twitter API need to be stored as environment 
 #' variables since this function calls directly to the bash_profile.
 #'
@@ -15,5 +13,5 @@
 #' @import twitteR tidyverse
 #' @examples
 #' \dontrun{
-#'   get_tweets('@BrunoMars')
+#'   get_poll_from_user('@BrunoMars')
 #' }
