@@ -13,7 +13,7 @@
 #' @import twitteR tidyverse
 #' @examples
 #' \dontrun{
-#'   get_poll_from_user('PollzOnTwitta')
+#'   get_polls_from_user('PollzOnTwitta')
 #' }
 
 require(httr)
@@ -21,7 +21,7 @@ require(jsonlite)
 require(dplyr)
 require(tidyr)
 
-get_poll_from_user <- function(username, tweet_num = 10) {
+get_polls_from_user <- function(username, tweet_num = 10) {
   
   # Check argument validity
   if (!is.character(username)) {
