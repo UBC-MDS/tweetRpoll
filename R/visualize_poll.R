@@ -33,6 +33,7 @@
 
 require(ggplot2)
 require(lubridate)
+require(stats)
 
 visualize_poll <- function(poll_obj, show_user = FALSE, show_duration = FALSE, show_date = FALSE) {
 
@@ -41,13 +42,15 @@ visualize_poll <- function(poll_obj, show_user = FALSE, show_duration = FALSE, s
     stop("Input argument poll_obj needs to be a list")
   }
 
+  label <- votes <- NULL
+
   # create data frame
   df <- poll_obj$`poll options`
   # set size of plot
   options(repr.plot.width = 10, repr.plot.height = 6)
   # create poll bar chart
   barplot <- ggplot2::ggplot(df, ggplot2::aes(
-    y = reorder(label, -votes),
+    y = stats::reorder(label, -votes),
     x = votes,
     fill = label
   )) +
