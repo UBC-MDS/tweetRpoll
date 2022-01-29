@@ -47,14 +47,14 @@ get_polls_from_user <- function(username, tweet_num = 10) {
   user_url <- sprintf('https://api.twitter.com/2/users/by?usernames=%s', username)
   user_response <- httr::GET(url = user_url, httr::add_headers(.headers = headers), query = user_params)
   user_object <- httr::content(user_response, as = "text")
-  user_json_data <- as.data.frame(fromJSON(user_object))
+  user_json_data <- as.data.frame(jsonlite::fromJSON(user_object))
   user_id <-sprintf(user_json_data$data.id)
 
   # Get tweets specified by the requested user ID
   tweet_params = list(`expansions` = 'attachments.poll_ids', `max_results` = tweet_num)
   tweet_url <- sprintf('https://api.twitter.com/2/users/%s/tweets', user_id)
   tweet_response <- httr::GET(url = tweet_url, httr::add_headers(.headers = headers), query = tweet_params)
-  tweet_object <- content(
+  tweet_object <- httr::content(
     tweet_response,
     as = 'parsed',
     type = 'application/json',
