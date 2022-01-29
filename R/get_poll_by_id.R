@@ -50,14 +50,16 @@ get_poll_by_id <- function(tweet_id) {
     simplifyDataFrame = TRUE
   )
 
-#  if (tweet_object$errors$title == "Not Found Error") {
-#    stop('Not a valid tweet ID')
-#  }
+  if ("errors" %in% names(tweet_object)) {
+    error_msg <- tweet_object$title
+    error_msg_detail <- tweet_object$detail
+    msg <- paste("Request returned error: ", error_msg, error_msg_detail, sep="\n")
+    stop(msg)
+  }
 
-#  if (tweet_object$error$title == "No Poll") {
-#    stop('Tweet does not contain a poll')
-#  }
-
+  if (!("polls" %in% names(tweet_object$includes))){
+  #  stop("Tweet does not contain a poll")
+  }
 
   res <- list()
   res['text'] <- tweet_object$data$text
@@ -67,8 +69,11 @@ get_poll_by_id <- function(tweet_id) {
   res['user'] <- tweet_object$includes$users$username
   res['total'] <- sum(tweet_object$includes$polls$options[[1]]$votes)
 
-  return (res)
+  return (tweet_object)
+  #return (res)
 }
 
-#poll_obj <- get_poll_by_id('1481040318325739523')
+#poll_obj <- get_poll_by_id('1487296083935916035') #no poll
+#poll_obj <- get_poll_by_id('1481040318325739523') #poll
+poll_obj <- get_poll_by_id('148104031832573952366') #wrong tweet id
 
