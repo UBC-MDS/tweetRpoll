@@ -1,5 +1,6 @@
 require(rlang)
 require(lubridate)
+require(stats)
 
 sample_poll_obj <- list()
 sample_poll_obj['text'] <- 'How normal is it to shower before the gym'
@@ -20,7 +21,7 @@ test_that("visualize_poll() errors if poll_obj is not a list, if show_user, show
 test_that("Plot should use geom_bar and map votes to x, map label to y, map label to fill.", {
   expect_true("GeomBar" %in% c(class(visualize_poll(sample_poll_obj)$layers[[1]]$geom)))
   expect_true("votes" == rlang::get_expr(visualize_poll(sample_poll_obj)$mapping$x))
-  expect_true("reorder(label, -votes)" == rlang::get_expr(visualize_poll(sample_poll_obj)$mapping$y))
+  expect_true("stats::reorder(label, -votes)" == rlang::get_expr(visualize_poll(sample_poll_obj)$mapping$y))
   expect_true("label" == rlang::get_expr(visualize_poll(sample_poll_obj)$mapping$fill))
 })
 
