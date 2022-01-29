@@ -10,13 +10,13 @@ test_get_poll_by_id <- function() {
 
   # Test that it contains poll options #
   test_that("Output should contain poll options", {
-    expect_true(!is.null(poll_obj$'poll options'))
+    expect_true(!is.null(res_good$'poll options'))
   })
 
   # Test that it contains text and user info #
   test_that("Output should contain tweet text and author username", {
-    expect_true(!is.null(poll_obj$'text'))
-    expect_true(!is.null(poll_obj$'user'))
+    expect_true(!is.null(res_good$'text'))
+    expect_true(!is.null(res_good$'user'))
   })
 
   # Testing Errors #
