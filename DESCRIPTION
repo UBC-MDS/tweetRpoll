@@ -23,4 +23,5 @@ Imports:
     stats,
     magrittr, 
     tidyverse,
-    twitteR
+    twitteR,
+    httr
