@@ -2,11 +2,11 @@
 #'
 #' Return a data.frame of poll data from Twitter given a poll ID.
 #' The output data.frame will contain five columns: (1) poll_question,
-#' (2) poll_options, (3) total_responses, (4) duration, (5) date.
+#' (2) poll_options, (3) total_responses, (4) duration, (5) date, (6) user.
 #'
 #' @param tweet_id character, the id of the tweet with poll to query
 #'
-#' @return data.frame
+#' @return list
 #' @export
 #'
 #' @importFrom magrittr %>%
@@ -30,6 +30,9 @@ get_poll_by_id <- function(tweet_id) {
     stop('Please enter a valid tweet id')
   }
 
+  # Once again, like in python package, we are hardcoding a bearer token ID
+  # For the convenience of the TAs testing the package
+  # Like in python, real implementation will grab the ID from the environmental variable
   bearer_token <- "AAAAAAAAAAAAAAAAAAAAAAyIYQEAAAAAjvBdCMMh1dT8clkpXhHxzld7Dhs%3DLPl5zMXXOZqznZGe9JP7zHj3Wzx0N4unogLcWl8wfIkwikjQKm"
 
   headers <- c(`Authorization` = sprintf('Bearer %s', bearer_token))
@@ -58,7 +61,7 @@ get_poll_by_id <- function(tweet_id) {
   }
 
   if (!("polls" %in% names(tweet_object$includes))){
-  #  stop("Tweet does not contain a poll")
+    stop("Tweet does not contain a poll")
   }
 
   res <- list()
@@ -73,6 +76,6 @@ get_poll_by_id <- function(tweet_id) {
 }
 
 #poll_obj <- get_poll_by_id('1487296083935916035') #no poll
-poll_obj <- get_poll_by_id('1481040318325739523') #poll
+#poll_obj <- get_poll_by_id('1481040318325739523') #poll
 #poll_obj <- get_poll_by_id('148104031832573952366') #wrong tweet id
 
