@@ -4,6 +4,7 @@
 #' The output data.frame will contain five columns: (1) poll_question,
 #' (2) poll_options, (3) total_responses, (4) duration, (5) date, (6) user.
 #'
+#' @name get_poll_by_id
 #' @param tweet_id character, the id of the tweet with poll to query
 #'
 #' @return list

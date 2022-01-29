@@ -4,6 +4,7 @@
 #' REQUIRES: Credentials for the Twitter API need to be stored as environment
 #' variables since this function calls directly to the bash_profile.
 #'
+#' @name get_polls_from_user
 #' @param username character, the username of the twitter user to query
 #'
 #' @return data.frame
@@ -22,7 +23,7 @@ require(dplyr)
 require(tidyr)
 
 get_polls_from_user <- function(username, tweet_num = 10) {
-  
+
   # Check argument validity
   if (!is.character(username)) {
     stop("Invalid argument type: input username must be a string.")
@@ -30,17 +31,17 @@ get_polls_from_user <- function(username, tweet_num = 10) {
   if (!is.numeric(tweet_num) | tweet_num%%1 != 0 | tweet_num < 5 | tweet_num > 100) {
     stop('Invalid argument: input tweet_num must be an interger >= 5 and <= 100.')
   }
-  
+
   # Twitter API credentials
   # bearer_token <- Sys.getenv("BEARER_TOKEN")
   ############################################################################
   # Note: For the TAs convenience, we hard coded the bearer_token below.
   # In practice, we would use commented out code to get the token from environmental variable.
   ############################################################################
-  
+
   bearer_token <- "AAAAAAAAAAAAAAAAAAAAAOcOYQEAAAAArkXS3vK8LeepFyFpQEnoXoFheTg%3Dx86kO3cGNAt0jnap6njmh2cMJoBTjUXMlkrfIUDuW6YlvXWaf8"
   headers <- c(`Authorization` = sprintf('Bearer %s', bearer_token))
-  
+
   # Get user_id from username
   user_params = list()
   user_url <- sprintf('https://api.twitter.com/2/users/by?usernames=%s', username)
@@ -48,7 +49,7 @@ get_polls_from_user <- function(username, tweet_num = 10) {
   user_object <- httr::content(user_response, as = "text")
   user_json_data <- as.data.frame(fromJSON(user_object))
   user_id <-sprintf(user_json_data$data.id)
-  
+
   # Get tweets specified by the requested user ID
   tweet_params = list(`expansions` = 'attachments.poll_ids', `max_results` = tweet_num)
   tweet_url <- sprintf('https://api.twitter.com/2/users/%s/tweets', user_id)
@@ -59,7 +60,7 @@ get_polls_from_user <- function(username, tweet_num = 10) {
     type = 'application/json',
     simplifyDataFrame = TRUE
   )
-  
+
   # Get poll_ids from tweets if available
   poll_ids <- tweet_object$includes$polls[1]
   return(poll_ids)
