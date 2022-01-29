@@ -4,7 +4,7 @@
 #' Option to include additional information in the text box
 #' if at least one of (1) show_user, (2) show_duration, and
 #' (3)show_date is set to True.
-#'
+#' @name visualize_poll
 #' @param poll_obj A list containing poll responses from get_poll_by_id()
 #' @param show_user A logical to display user
 #' @param show_duration A logical to display duration of the poll
@@ -19,7 +19,17 @@
 #' @export
 #'
 #' @examples
-#' visualize_poll('4235234', show_duration=True)
+#' poll_obj <- list()
+#' poll_obj['text'] <- 'How normal is it to shower before the gym'
+#' poll_obj['duration'] <- as.integer(1440)
+#' poll_obj['date'] <- '2022-01-12T23:08:22.000Z'
+#' poll_obj['poll options'] <- list(data.frame(
+#' 'position' = as.integer(c(1, 2, 3, 4)),
+#' 'label' = c('Not normal', 'Completely wack', 'Insane', 'Run'),
+#' 'votes' = as.integer(c(295, 124, 146, 50))))
+#' poll_obj['user'] <- 'RadaNotSay'
+#' poll_obj['total'] <- as.integer(615)
+#' visualize_poll(poll_obj, show_duration=TRUE)
 
 require(ggplot2)
 require(lubridate)
