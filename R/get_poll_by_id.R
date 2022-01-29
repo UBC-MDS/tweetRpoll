@@ -69,11 +69,10 @@ get_poll_by_id <- function(tweet_id) {
   res['user'] <- tweet_object$includes$users$username
   res['total'] <- sum(tweet_object$includes$polls$options[[1]]$votes)
 
-  return (tweet_object)
-  #return (res)
+  return (res)
 }
 
 #poll_obj <- get_poll_by_id('1487296083935916035') #no poll
-#poll_obj <- get_poll_by_id('1481040318325739523') #poll
-poll_obj <- get_poll_by_id('148104031832573952366') #wrong tweet id
+poll_obj <- get_poll_by_id('1481040318325739523') #poll
+#poll_obj <- get_poll_by_id('148104031832573952366') #wrong tweet id
 
