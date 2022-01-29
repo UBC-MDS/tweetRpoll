@@ -47,7 +47,7 @@ get_poll_by_id <- function(tweet_id) {
 
   response <- httr::GET(url = url_string, httr::add_headers(.headers=headers), query = params)
 
-  tweet_object <- content(
+  tweet_object <- httr::content(
     response,
     as = 'parsed',
     type = 'application/json',
