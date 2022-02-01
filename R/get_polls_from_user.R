@@ -62,6 +62,8 @@ get_polls_from_user <- function(username, tweet_num = 10) {
   )
 
   # Get poll_ids from tweets if available
-  poll_ids <- tweet_object$includes$polls[1]
-  return(poll_ids)
+  tweet_object_data <- tweet_object$data
+  tweet_with_poll <- subset(tweet_object_data, tweet_object_data[1]!="NULL")
+  tweet_id_with_poll <- tweet_with_poll[2]
+  return(tweet_id_with_poll)
 }
