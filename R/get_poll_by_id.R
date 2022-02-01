@@ -1,7 +1,7 @@
 #' Get Poll Data from Tweet ID
 #'
-#' Return a data.frame of poll data from Twitter given a poll ID.
-#' The output data.frame will contain five columns: (1) poll_question,
+#' Return a data.frame of poll data from Twitter given a tweet ID.
+#' The output data.frame will contain six columns: (1) poll_question,
 #' (2) poll_options, (3) total_responses, (4) duration, (5) date, (6) user.
 #'
 #' @name get_poll_by_id
@@ -79,4 +79,3 @@ get_poll_by_id <- function(tweet_id) {
 #poll_obj <- get_poll_by_id('1487296083935916035') #no poll
 #poll_obj <- get_poll_by_id('1481040318325739523') #poll
 #poll_obj <- get_poll_by_id('148104031832573952366') #wrong tweet id
-

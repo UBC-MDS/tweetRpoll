@@ -4,6 +4,7 @@
 #' Option to include additional information in the text box
 #' if at least one of (1) show_user, (2) show_duration, and
 #' (3)show_date is set to True.
+#'
 #' @name visualize_poll
 #' @param poll_obj A list containing poll responses from get_poll_by_id()
 #' @param show_user A logical to display user

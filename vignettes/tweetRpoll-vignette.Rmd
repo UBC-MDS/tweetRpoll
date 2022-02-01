@@ -1,0 +1,62 @@
+---
+title: "Introduction to tweetRpoll"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{tweetRpoll-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=8, fig.height=4
+)
+```
+
+## Overview
+
+`tweetRpoll` is a R package that allows users to extract and visualize
+poll data from Twitter. Our goal is to make `tweetRpoll` helpful and 
+user-friendly; any R beginner can effectively gain access to the data 
+and make their own data-driven decisions.
+
+To use this package, follow the installation guide on README and 
+install this package.  Then, import the package.
+
+```{r setup}
+library(tweetRpoll)
+```
+
+## Functions
+    
+### Extract tweet IDs with `get_polls_from_user`:       
+`get_polls_from_user` extracts tweet IDs of tweets that contain polls 
+for a Twitter user given their handle (i.e. PollzOnTwitta). This function 
+requires Twitter API credentials. Users need to store their credentials 
+in a `.Renviron` file in the root directory. 
+
+```{r}
+get_polls_from_user('PollzOnTwitta')
+```
+
+### Extract poll data with `get_poll_by_id`:       
+`get_poll_by_id` extracts poll information such as poll questions, 
+poll options, and poll responses, from Twitter given the tweet ID 
+returned from the `get_polls_from_user` function.
+
+```{r}
+get_poll_by_id(1239677495487737856)
+```
+### Visualize poll data with `visualize_poll`:       
+`visualize_poll` takes in the output of the `get_poll_by_id` 
+function and visualizes the poll information. The function provides
+option to include additional information in the text box if at least 
+one of the arguments (1) show_user, (2) show_duration, and (3) show_date 
+is set to True.
+
+```{r}
+poll_info <- get_poll_by_id(1239677495487737856)
+visualize_poll(poll_info)
+```
