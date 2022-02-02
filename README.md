@@ -20,11 +20,12 @@ interactions.
 
 ## Functions
 
--   `get_poll_by_id`:
-    -   This function extracts poll data from Twitter given the poll ID.
 -   `get_polls_from_user`:
-    -   This function returns a list of poll IDs from a Twitter user
+    -   This function returns a list of tweet IDs from a Twitter user
         which can be fed into the `get_poll_by_id` function.
+-   `get_poll_by_id`:
+    -   This function extracts poll data from Twitter given the tweet
+        ID.
 -   `visualize_poll`:
     -   This function takes in the output of `get_poll_by_id` function
         and visualizes the poll information.
@@ -51,16 +52,6 @@ And the development version from [GitHub](https://github.com/) with:
 ``` r
 # install.packages("devtools")
 devtools::install_github("UBC-MDS/tweetRpoll")
-```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(tweetRpoll)
-## basic example code
-## To do
 ```
 
 ## Contributors

@@ -1,8 +1,8 @@
 #' Get Polls from User
 #'
-#' Return a data.frame of poll ids for a given Twitter user.
-#' REQUIRES: Credentials for the Twitter API need to be stored as environment
-#' variables since this function calls directly to the bash_profile.
+#' Return a data.frame of tweet ids for a given Twitter user.
+#' REQUIRES: Credentials for the Twitter API need to be stored as
+#' environment variables.
 #'
 #' @name get_polls_from_user
 #' @param username character, the username of the twitter user to query
