@@ -4,6 +4,8 @@
 # tweetRpoll
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/UBC-MDS/tweetRpoll/workflows/R-CMD-check/badge.svg)](https://github.com/UBC-MDS/tweetRpoll/actions)
 <!-- badges: end -->
 
 ## Overview
